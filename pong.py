@@ -1,23 +1,27 @@
 import pgzrun
+from random import randint as r
 WIDTH = 800
 HEIGHT = 500
 box_red = Rect((10,10), (20, 100))
 box_blue = Rect((WIDTH-30, 10), (20, 100))
+balls = []
 ball = Rect((WIDTH/2, HEIGHT/2), (20, 20))
-brs, bbs, bs = 5, 6, (7,8)
+brs, bbs, bs = 5, 6, (r(1,10), r(-10,10))
 
 def draw():
     screen.fill('white')
     screen.draw.filled_rect(box_red, 'red')
     screen.draw.filled_rect(box_blue, 'blue')
-    screen.draw.filled_rect(ball, 'black')
+    for b in balls:
+        screen.draw.filled_rect(b, 'black')
 
 def update():
     global brs, bbs, bs
     brs = move_vertically(box_red, brs) # call
     bbs = move_vertically(box_blue, bbs) # call
     # print(box_red.bottom, box_red.top, box_red.y, brs)
-    bs = move_ball(ball, bs)
+    for b in balls:
+        bs = move_ball(b, bs)
 
 # defination
 def move_vertically(box, speed):
