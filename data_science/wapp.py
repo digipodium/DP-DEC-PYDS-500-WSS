@@ -25,6 +25,8 @@ st.set_page_config(
     layout='wide'
 )
 
+
+st.image('data_science/poke.jpg', use_column_width=True)
 # - get the data 
 with st.spinner('Loading Data...'):
     df = load()
