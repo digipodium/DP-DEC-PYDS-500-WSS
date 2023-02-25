@@ -31,7 +31,7 @@ with st.spinner('Loading Data...'):
     # st.snow()
 
 # 2 columns 
-c1, c2  = st.columns([9,4])
+c1, c2  = st.columns([6,4])
 c1.header('Pokemon Dataset')
 c1.dataframe(df)
 
@@ -40,9 +40,16 @@ cnt_legendary = df['Legendary'].value_counts()[1]
 cnt_types = df['Type 1'].value_counts()[1]
 mst_cmn_type = df['Type 1'].value_counts().index[0]
 
-c2.metric('Total Pokemon', df.shape[0],'👻')
-c2.metric('Legendary', cnt_legendary, '👻🦕🦖')
-c2.metric('Most Common Type', cnt_types, mst_cmn_type)
+c11, c12, c13 = c2.columns(3)
+c11.metric('Total Pokemon', df.shape[0],'👻')
+c12.metric('Legendary', cnt_legendary, '👻🦕🦖')
+c13.metric('Most Common Type', cnt_types, mst_cmn_type)
+c11.metric('Max Attack', df['Attack'].max(), '👻')
+c12.metric('Max Defense', df['Defense'].max(), '👻')
+c13.metric('Max HP', df['HP'].max(), '👻')
+c11.metric('Max Sp. Atk', df['Sp. Atk'].max(), '👻')
+c12.metric('Max Sp. Def', df['Sp. Def'].max(), '👻')
+c13.metric('Max Speed', df['Speed'].max(), '👻')
 
 # viz
 st.header('Pokemon Graphically')
